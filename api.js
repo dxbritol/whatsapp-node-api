@@ -10,12 +10,29 @@ const { Client, LocalAuth } = require("whatsapp-web.js");
 process.title = "whatsapp-node-api";
 global.client = new Client({
   authStrategy: new LocalAuth(),
-  puppeteer: { headless: true },
+  puppeteer: { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage',
+        '--disable-accelerated-2d-canvas',
+        '--no-first-run',
+        '--no-zygote',
+        '--disable-gpu'] },
+  webVersionCache: {
+    type: 'remote',
+    remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html',
+   }
+
+
 });
 
 global.authed = false;
 
 const app = express();
+
+// Inicio jbrito-20231117 - Autorización Cors
+const cors = require('cors');
+app.use(cors({
+  origin: '*'
+}));
+// Fin jbrito-20231117 - Autorización Cors
 
 const port = process.env.PORT || config.port;
 //Set Request Size Limit 50 MB
