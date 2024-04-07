@@ -1,4 +1,4 @@
-FROM node:12.22.0-buster
+FROM node:lts-buster
 
 RUN apt-get update && \
   apt-get install -y \
@@ -9,11 +9,25 @@ RUN apt-get update && \
   libgtk-3-0 && \
   rm -rf /var/lib/apt/lists/*
 
-COPY package.json .
+#RUN apt-get install -yq tzdata
+
+#ENV TZ="America/Guayaquil"
+
+COPY package*.json .
+
+RUN npm install cors
 
 RUN npm install
 
 COPY . .
+
+COPY LocalWebCache.js /node_modules/whatsapp-web.js/src/webCache/LocalWebCache.js
+
+#RUN npm update whatsapp-web.js
+
+#RUN cd /node_modules/whatsapp-web.js/ && npm install puppeteer@latest
+
+#RUN npm install cors
 
 EXPOSE 5000
 
