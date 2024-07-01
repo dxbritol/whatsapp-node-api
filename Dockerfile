@@ -19,6 +19,8 @@ RUN npm install cors
 
 RUN npm install
 
+RUN npm install github:pedroslopez/whatsapp-web.js#webpack-exodus
+
 COPY . .
 
 COPY LocalWebCache.js /node_modules/whatsapp-web.js/src/webCache/LocalWebCache.js
