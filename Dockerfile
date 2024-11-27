@@ -19,7 +19,9 @@ RUN npm install cors
 
 RUN npm install
 
-RUN npm install github:pedroslopez/whatsapp-web.js#webpack-exodus
+#RUN npm install github:pedroslopez/whatsapp-web.js#webpack-exodus
+RUN npm install whatsapp-web.js
+#RUN npm install qrcode-terminal
 
 COPY . .
 

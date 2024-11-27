@@ -17,7 +17,7 @@ global.client = new Client({
         '--disable-gpu'] },
   webVersionCache: {
     type: 'remote',
-    remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.3000.1014580163-alpha.html',
+    remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.3000.1018490153-alpha.html',
    }
 
 
